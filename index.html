@@ -3,48 +3,210 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Your Website</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8">
+	<title>Blind Data</title>
+	<style type="text/css" media="screen">
+      body {
+        background: url("assets/images/bg.jpg") #000E11 no-repeat center top;
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica", "Helvetica Neue", "Arial", "Verdana";
+        color: #333;
+        text-align: center;
+        font-size: 110%;
+        background-attachment:fixed;
+      }
+      .logo {
+        background: url("assets/images/logo.png") no-repeat left top;
+        margin: 20px auto;
+        padding: 110px 30px 0 30px;
+        text-indent: -9000px;
+        overflow: hidden;
+      }
+      .wrapper {
+      	margin: 30px;
+      	padding: 30px;
+      	background: rgba(0,0,0,0.2)
+      }
+      form {
+      	margin: 0;
+      	padding: 0;      }
+      input {
+      	font-family: "Helvetica", "Helvetica Neue", "Arial", "Verdana";
+      	font-weight: 300;
+        color: #999;
+        font-size: 120%;
+        border: 1px solid #fff;
+        padding: 20px;
+      }
+      button {
+      	font-family: "Helvetica", "Helvetica Neue", "Arial", "Verdana";
+      	background: #000;
+      	font-weight: bold;
+        color: #fff;
+        font-size: 120%;
+        border: 1px solid #000;
+        padding: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+      	background: #333;
+      }
+      .serps {
+      	margin: 20px 0 0 0;
+      	padding: 0;
+      	list-style: none;
+      }
+
+      .serps table {
+      	width: 100%;
+      }
+
+      .serps table tr td {
+      	height: 10px;
+      }
+
+     .serps tr.data {
+     	background: #fff;
+     }
+
+     .serps tr.data td {
+     	padding: 10px 20px;
+     }
+
+     .icon {
+     	display: block;
+     	width: 44px;
+     	height: 44px;
+     	background-position: center;
+     	background-repeat: no-repeat;
+     	overflow: hidden;
+     	text-indent: -9000px;
+     }
+
+     .icon.expand {
+     	background-image: url("assets/images/icon_expand.png");
+     }
+
+     .icon.link {
+     	background-image: url("assets/images/icon_link.png");
+     }
+
+     .icon.link.on {
+     	background-image: url("assets/images/icon_link_on.png");
+     }
+
+     .icon.comment {
+     	background-image: url("assets/images/icon_comment.png");
+     }
+
+      @media only screen and (min-width: 640px) {
+      	input,
+      	button {
+      		font-size: 140%;
+      	}
+
+      	input {
+      		width: 65%;
+      	}
+       	button {
+      		width: 26%;
+      		float: right;
+      	}
+      }
+
+      @media only screen and (min-width: 800px) {
+      	form {
+      		text-align: left;
+      	}
+      	input,
+      	button {
+      		font-size: 200%;
+      	}
+      }
+
+      @media only screen and (min-width: 1200px) {
+	      body {
+	      	-webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover;
+	      }
+	  }
+
+    </style>
 </head>
 
 <body>
 
 	<header>
-		<nav>
-			<ul>
-				<li>Your menu</li>
-			</ul>
-		</nav>
+		<div class="logo">Blind Data</div>
 	</header>
-	
-	<section>
-	
-		<article>
-			<header>
-				<h2>Article title</h2>
-				<p>Posted on <time datetime="2009-09-04T16:31:24+02:00">September 4th 2009</time> by <a href="#">Writer</a> - <a href="#comments">6 comments</a></p>
-			</header>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-		</article>
-		
-		<article>
-			<header>
-				<h2>Article title</h2>
-				<p>Posted on <time datetime="2009-09-04T16:31:24+02:00">September 4th 2009</time> by <a href="#">Writer</a> - <a href="#comments">6 comments</a></p>
-			</header>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-		</article>
-		
+
+	<section class="wrapper">
+		<form>
+			<input placeholder="Type a keyword here">
+			<button>Search</button>
+		</form>
+
+		<div class="serps">
+			<table cellpadding=0 cellspacing=0>
+				<tr class="data">
+					<td><a href="#" class="icon expand">Expand</a></td>
+					<td>Title:  If this is a <b>man</b>&hellip;</td>
+					<td>from “British Library”</td>
+					<td><a href="#" class="icon link">Link</a></td>
+					<td><a href="#" class="icon comment">Comment</a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="data">
+					<td><a href="#" class="icon expand">Expand</a></td>
+					<td>Title:  If this is a <b>man</b>&hellip;</td>
+					<td>from “British Library”</td>
+					<td><a href="#" class="icon link">Link</a></td>
+					<td><a href="#" class="icon comment">Comment</a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="data">
+					<td><a href="#" class="icon expand">Expand</a></td>
+					<td>Title:  If this is a <b>man</b>&hellip;</td>
+					<td>from “British Library”</td>
+					<td><a href="#" class="icon link">Link</a></td>
+					<td><a href="#" class="icon comment">Comment</a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="data">
+					<td><a href="#" class="icon expand">Expand</a></td>
+					<td>Title:  If this is a <b>man</b>&hellip;</td>
+					<td>from “British Library”</td>
+					<td><a href="#" class="icon link">Link</a></td>
+					<td><a href="#" class="icon comment">Comment</a></td>
+				</tr>
+			</table>
+		</div>
 	</section>
+	
 
-	<aside>
-		<h2>About section</h2>
-		<p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-	</aside>
-
-	<footer>
-		<p>Copyright 2009 Your name</p>
-	</footer>
 
 </body>
 
