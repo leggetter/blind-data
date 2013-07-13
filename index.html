@@ -5,6 +5,7 @@
 	<title>Blind Data</title>
 
   <link href="/assets/css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="http://prismjs.com/prism.css" data-noprefix />
 </head>
 
 <body>
@@ -42,14 +43,15 @@
         {{#each searchResults}}
         <tr class="data">
           <td><a href="#" class="icon expand">Expand</a></td>
-          <td>Title:  If this is a <b>man</b>&hellip;</td>
-          <td>from “British Library”</td>
+          <td>{{{highlightJS __json}}}</td>
+          <td>from &quot;{{__dsName}}&quot;</td>
           <td><a href="#" class="icon link">Link</a></td>
           <td><a href="#" class="icon comment">Comment</a></td>
+          <td><a href="#" class="icon expand">Visualise</a></td>
         </tr>
         {{else}}
         <tr class="data">
-          <td colspan="5">
+          <td colspan="6">
             The choice is yours...
           </td>
         </tr>
