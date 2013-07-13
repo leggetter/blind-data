@@ -2,6 +2,11 @@ Searches = new Meteor.Collection('Searches');
 
 if (Meteor.isClient) {
 
+  Handlebars.registerHelper('userLoggedIn', function () {
+    var user = Meteor.user();
+    return (!_.isUndefined(user) && !_.isNull(user));
+  });
+
   Template.search.events({
     'click button': function(evt, tmpl) {
       
