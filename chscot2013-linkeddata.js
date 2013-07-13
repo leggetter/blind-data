@@ -19,7 +19,7 @@ if (Meteor.isClient) {
           Searches.update( exists._id,
             {
               $inc: {  count: 1 },
-              lastUpdated: new Date()
+              $set: { lastUpdated: new Date() }
             }
           );
         }
