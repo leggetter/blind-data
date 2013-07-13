@@ -1,0 +1,38 @@
+<head>
+  <title>Blind Data</title>
+</head>
+
+<body>
+	{{> header}}
+
+  {{> search}}
+
+	{{> activeSearches}}
+</body>
+
+<template name="header">
+  <h1>Blind Data</h1>
+  <h2>The choice is yours</h2>
+
+  {{loginButtons}}
+</template>
+
+<template name="search">
+	<form>
+		<input type="input" id="searchText" />
+		<button id="searchBtn">Search</button>
+	</form>
+
+</template>
+
+<template name="activeSearches">
+	<ul>
+		{{#each searches}}
+		<li>
+			<a href="#">{{text}}</a>
+		</li>
+		{{else}}
+		<li>No active searches</li>
+		{{/each}}
+	</ul>
+</template>
