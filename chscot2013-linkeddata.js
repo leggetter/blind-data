@@ -68,6 +68,8 @@ if (Meteor.isClient) {
   });
 
   function doSearch() {
+    Session.set( 'search-results', null );
+    
     var search = { text: Session.get( 'search-text' ) };
 
     if( search.text.toLowerCase() === 'cilla' ) {
@@ -138,7 +140,11 @@ if (Meteor.isClient) {
   Template.linkCollection.events({
     'click .button': function( evt, tmpl ) {
       var links = Session.get( 'links' );
-      Links.insert( links );
+      var data = {
+        searchText: Session.get( 'search-text' ),
+        links: links
+      };
+      Links.insert( data );
 
       Session.set( 'links', [] );
 

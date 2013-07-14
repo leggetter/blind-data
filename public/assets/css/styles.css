@@ -93,6 +93,7 @@ button:hover,
 
 .serps tr.data td .json {
 	display: none;
+	text-align: left;
 }
 
 .icon {
