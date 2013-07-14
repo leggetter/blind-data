@@ -6,6 +6,7 @@ Links = new Meteor.Collection('Links');
 
 if (Meteor.isClient) {
 
+  Session.setDefault( 'searching', false );
   Session.setDefault( 'search-text', '' );
 
   // Links pending save for the user
@@ -68,8 +69,9 @@ if (Meteor.isClient) {
   });
 
   function doSearch() {
+    Session.set( 'searching', true );
     Session.set( 'search-results', null );
-    
+
     var search = { text: Session.get( 'search-text' ) };
 
     if( search.text.toLowerCase() === 'cilla' ) {
@@ -96,9 +98,11 @@ if (Meteor.isClient) {
       done: function( data ) {
         console.log( data );
         Session.set( 'search-results', data );
+        Session.set('searching', false);
       },
       fail: function() {
         console.log( arguments );
+        Session.set('searching', false);
       }
     } );
   }
@@ -118,9 +122,27 @@ if (Meteor.isClient) {
     return Session.get( 'search-text' );
   };
 
+  Template.search.searching = function() {
+    return Session.get( 'searching' );
+  };
+
+  Template.search.searchStatusText = function() {
+    var text;
+    if( Template.search.searching() ) {
+      text = 'Searching for <strong>' + Template.search.searchText() + '</strong>.';
+    }
+    else if( Template.search.searchText() ) {
+      text = 'No search results found for <strong>' + Template.search.searchText() + '</strong>. Please try again.';
+    }
+    else {
+      text = 'The choice is yours.';
+    }
+    return new Handlebars.SafeString( text );
+  };
+
   Template.search.searchResults = function() {
     return Session.get( 'search-results' );
-  }
+  };
 
   Template.activeSearches.searches = function() {
     return Searches.find({}).fetch();

@@ -61,11 +61,7 @@
         {{else}}
         <tr class="data">
           <td colspan="6">
-            {{#if searchText}}
-            No search results found for <strong>{{searchText}}</strong>. Please try again.
-            {{else}}
-            The choice is yours...
-            {{/if}}
+            {{searchStatusText}}
           </td>
         </tr>
         {{/each}}
