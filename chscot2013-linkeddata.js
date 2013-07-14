@@ -18,15 +18,6 @@ if (Meteor.isClient) {
     }
   } );
 
-  Handlebars.registerHelper('userLoggedIn', function () {
-    var user = Meteor.user();
-    return (!_.isUndefined(user) && !_.isNull(user));
-  });
-
-  Handlebars.registerHelper('highlightJS', function () {
-    return Prism.highlight( JSON.stringify( this, undefined, 2 ), Prism.languages.javascript );
-  });
-
   Template.search.events({
     'click button': function(evt, tmpl) {
       
@@ -85,20 +76,6 @@ if (Meteor.isClient) {
     return Searches.find({}).fetch();
   };
 
-  /**
-   * create some common field names to show in the results view
-   */
-  function normalize( dsName, items ) {
-    var item,
-        json;
-    for( var i = 0, l = items.length; i < l; ++i ) {
-      item = items[ i ];
-      json = JSON.stringify( item, undefined, 2 );
-      item.__json = json;
-      item.__dsName = dsName;
-    }
-    return items;
-  }
 }
 
 if (Meteor.isServer) {
