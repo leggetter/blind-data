@@ -23,8 +23,8 @@ if (Meteor.isClient) {
     return (!_.isUndefined(user) && !_.isNull(user));
   });
 
-  Handlebars.registerHelper('highlightJS', function ( data ) {
-    return Prism.highlight( data, Prism.languages.javascript );
+  Handlebars.registerHelper('highlightJS', function () {
+    return Prism.highlight( JSON.stringify( this, undefined, 2 ), Prism.languages.javascript );
   });
 
   Template.search.events({
@@ -35,9 +35,10 @@ if (Meteor.isClient) {
 
         var search = { text: searchStr };
 
+        Session.set( 'search-text', search.text );
+
         if( search.text.toLowerCase() === 'cilla' ) {
           sound.play();
-          return false;
         }
 
         var exists = Searches.findOne( search );
@@ -58,12 +59,8 @@ if (Meteor.isClient) {
         var searchService = new ChScotSearch();
         searchService.search( search.text, {
           done: function( data ) {
-            var items = [];
-            for( var datasetName in data ) {
-              items = normalize( datasetName, data[ datasetName ] );
-              items = items.concat( data[ datasetName ] );
-            }
-            Session.set( 'search-results', items );
+            console.log( data );
+            Session.set( 'search-results', data );
           },
           fail: function() {
             console.log( arguments );
@@ -72,11 +69,13 @@ if (Meteor.isClient) {
 
       }
 
-      Template.activeSearches();
-
       return false;
     }
   });
+
+  Template.search.searchText = function() {
+    return Session.get( 'search-text' ) || '';
+  };
 
   Template.search.searchResults = function() {
     return Session.get( 'search-results' );

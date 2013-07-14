@@ -34,7 +34,7 @@
 
   <section class="wrapper">
     <form>
-      <input id="searchText" placeholder="Type a keyword here">
+      <input id="searchText" placeholder="Type a keyword here" value="{{searchText}}">
       <button id="searchBtn">Search</button>
     </form>
 
@@ -43,7 +43,7 @@
         {{#each searchResults}}
         <tr class="data">
           <td><a href="#" class="icon expand">Expand</a></td>
-          <td>{{{highlightJS __json}}}</td>
+          <td>{{{highlightJS}}}</td>
           <td>from &quot;{{__dsName}}&quot;</td>
           <td><a href="#" class="icon link">Link</a></td>
           <td><a href="#" class="icon comment">Comment</a></td>
