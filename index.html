@@ -43,7 +43,10 @@
         {{#each searchResults}}
         <tr class="data">
           <td><a href="#" class="icon expand" title="Expand (to see full data set)">Expand</a></td>
-          <td>{{{highlightJS}}}</td>
+          <td>
+            <div class="summary">{{{highlightSearchMatch __summary}}</div>
+            <div class="json">{{{highlightJS}}}</div>
+          </td>
           <td>from &quot;{{__dsName}}&quot;</td>
           <td><a href="#" class="icon link" title="Link this data to another piece of data">Link</a></td>
           <td><a href="#" class="icon comment" title="Comment on this data">Comment</a></td>
