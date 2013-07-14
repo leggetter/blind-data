@@ -90,6 +90,10 @@ button:hover,
 	padding: 10px 20px;
 }
 
+.serps tr.data td .json {
+	display: none;
+}
+
 .icon {
 	display: block;
 	width: 44px;

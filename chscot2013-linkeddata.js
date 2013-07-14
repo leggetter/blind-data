@@ -61,6 +61,11 @@ if (Meteor.isClient) {
       }
 
       return false;
+    },
+    'click .icon.expand': function(evt, tmpl) {
+      var el = $( evt.srcElement || evt.target );
+      el.parents( 'tr.data' ).find( '.json' ).toggle();
+      return false;
     }
   });
 
