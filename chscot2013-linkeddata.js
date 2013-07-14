@@ -35,38 +35,9 @@ if (Meteor.isClient) {
 
         var search = { text: searchStr };
 
-        Session.set( 'search-text', search.text );
+        Session.set( 'search-text', searchStr );
 
-        if( search.text.toLowerCase() === 'cilla' ) {
-          sound.play();
-        }
-
-        var exists = Searches.findOne( search );
-        if( !exists ) {
-          search.count = 1;
-          search.lastUpdated = new Date();
-          Searches.insert( search );
-        }
-        else {
-          Searches.update( exists._id,
-            {
-              $inc: {  count: 1 },
-              $set: { lastUpdated: new Date() }
-            }
-          );
-        }
-        
-        var searchService = new ChScotSearch();
-        searchService.search( search.text, {
-          done: function( data ) {
-            console.log( data );
-            Session.set( 'search-results', data );
-          },
-          fail: function() {
-            console.log( arguments );
-          }
-        } );
-
+        doSearch();
       }
 
       return false;
@@ -96,6 +67,40 @@ if (Meteor.isClient) {
     }
   });
 
+  function doSearch() {
+    var search = { text: Session.get( 'search-text' ) };
+
+    if( search.text.toLowerCase() === 'cilla' ) {
+      sound.play();
+    }
+
+    var exists = Searches.findOne( search );
+    if( !exists ) {
+      search.count = 1;
+      search.lastUpdated = new Date();
+      Searches.insert( search );
+    }
+    else {
+      Searches.update( exists._id,
+        {
+          $inc: {  count: 1 },
+          $set: { lastUpdated: new Date() }
+        }
+      );
+    }
+    
+    var searchService = new ChScotSearch();
+    searchService.search( search.text, {
+      done: function( data ) {
+        console.log( data );
+        Session.set( 'search-results', data );
+      },
+      fail: function() {
+        console.log( arguments );
+      }
+    } );
+  }
+
   function findIndex( arr, thing ) {
     var find;
     for( var i = 0, l = arr.length; i < l; ++i ) {
@@ -119,6 +124,13 @@ if (Meteor.isClient) {
     return Searches.find({}).fetch();
   };
 
+  Template.activeSearches.events({
+    'click .tags a': function( evt, tmpl ) {
+      Session.set( 'search-text', this.text );
+      doSearch();
+    }
+  })
+
   Template.linkCollection.creatingLinks = function() {
     return Session.get( 'links' ).length > 1;
   };
@@ -127,7 +139,11 @@ if (Meteor.isClient) {
     'click .button': function( evt, tmpl ) {
       var links = Session.get( 'links' );
       Links.insert( links );
+
       Session.set( 'links', [] );
+
+      Session.set( 'search-text', '' );
+      Session.set( 'search-results', null );
     }
   })
 
