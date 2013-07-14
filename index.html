@@ -81,7 +81,9 @@
 </template>
 
 <template name="linkCollection">
+  {{#if creatingLinks}}
   <div class="link_collection">
     <a href="#" class="button">I'm done! Save these links</a>
   </div>
+  {{/if}}
 </template>

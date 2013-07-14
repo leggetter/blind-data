@@ -57,16 +57,12 @@ button:hover,
 	background: #333;
 }
 .link_collection {
-	display: none;
 	position: fixed;
 	background: rgba(0,0,0,0.6);
 	padding: 5px 0;
 	bottom: 0;
 	left: 0;
 	width: 100%;
-}
-.link_collection.on {
-	display: block;
 }
 .serps {
 	margin: 20px 0 0 0;

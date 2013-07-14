@@ -1,6 +1,15 @@
+// Active searches within the application
 Searches = new Meteor.Collection('Searches');
 
+// LinkedData
+Links = new Meteor.Collection('Links');
+
 if (Meteor.isClient) {
+
+  Session.setDefault( 'search-text', '' );
+
+  // Links pending save for the user
+  Session.setDefault( 'links', [] );
 
   var sound;
   soundManager.setup( {
@@ -66,11 +75,40 @@ if (Meteor.isClient) {
       var el = $( evt.srcElement || evt.target );
       el.parents( 'tr.data' ).find( '.json' ).toggle();
       return false;
+    },
+    'click .icon.link': function(evt, tmpl) {
+      var el = $( evt.srcElement || evt.target );
+      el.toggleClass( 'on' );
+      var added = el.hasClass( 'on' );
+
+      var links = Session.get( 'links' );
+      if( added && findIndex( links, this ) === -1 ) {
+        links.push( this );
+      }
+      else {
+        var linkIndex = findIndex( links, this );
+        links.splice( linkIndex, 1 );
+      }
+
+      Session.set( 'links', links );
+
+      return false;
     }
   });
 
+  function findIndex( arr, thing ) {
+    var find;
+    for( var i = 0, l = arr.length; i < l; ++i ) {
+      find = arr[ i ];
+      if( _.isEqual(find, thing ) ) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   Template.search.searchText = function() {
-    return Session.get( 'search-text' ) || '';
+    return Session.get( 'search-text' );
   };
 
   Template.search.searchResults = function() {
@@ -80,6 +118,18 @@ if (Meteor.isClient) {
   Template.activeSearches.searches = function() {
     return Searches.find({}).fetch();
   };
+
+  Template.linkCollection.creatingLinks = function() {
+    return Session.get( 'links' ).length > 1;
+  };
+
+  Template.linkCollection.events({
+    'click .button': function( evt, tmpl ) {
+      var links = Session.get( 'links' );
+      Links.insert( links );
+      Session.set( 'links', [] );
+    }
+  })
 
 }
 
