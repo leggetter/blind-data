@@ -37,7 +37,7 @@ if (Meteor.isClient) {
 
         if( search.text.toLowerCase() === 'cilla' ) {
           sound.play();
-          return;
+          return false;
         }
 
         var exists = Searches.findOne( search );
