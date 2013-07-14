@@ -97,6 +97,39 @@ button:hover {
 	background-image: url("../images/icon_comment.png");
 }
 
+.icon.see_links {
+	background-image: url("../images/icon_see_links.png");
+}
+
+.tags {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.tags li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.tags a {
+	padding: 3px 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #ccc;
+	color: #666;
+	text-decoration: none;
+	font-size: 95%;
+}
+
+.tags a:hover {
+	background: #aaa;
+	color: #333;
+}
+
 @media only screen and (min-width: 640px) {
 	input,
 	button {

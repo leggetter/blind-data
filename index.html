@@ -42,12 +42,12 @@
       <table cellpadding=0 cellspacing=0>
         {{#each searchResults}}
         <tr class="data">
-          <td><a href="#" class="icon expand">Expand</a></td>
+          <td><a href="#" class="icon expand" title="Expand (to see full data set)">Expand</a></td>
           <td>{{{highlightJS}}}</td>
           <td>from &quot;{{__dsName}}&quot;</td>
-          <td><a href="#" class="icon link">Link</a></td>
-          <td><a href="#" class="icon comment">Comment</a></td>
-          <td><a href="#" class="icon expand">Visualise</a></td>
+          <td><a href="#" class="icon link" title="Link this data to another piece of data">Link</a></td>
+          <td><a href="#" class="icon comment" title="Comment on this data">Comment</a></td>
+          <td><a href="#" class="icon see_links" title="See links to this piece of data">See links</a></td>
         </tr>
         {{else}}
         <tr class="data">
@@ -63,8 +63,8 @@
 </template>
 
 <template name="activeSearches">
-  <h3>Active Searches</h3>
-  <ul>
+  <h3>Recent Searches</h3>
+  <ul class="tags">
     {{#each searches}}
     <li>
       <a href="#">{{text}}</a>
