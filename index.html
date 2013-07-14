@@ -20,6 +20,8 @@
 
   {{> activeSearches}}
 
+  {{> linkCollection}}
+
 </body>
 
 <template name="main">
@@ -73,4 +75,10 @@
     <li>No active searches</li>
     {{/each}}
   </ul>
+</template>
+
+<template name="linkCollection">
+  <div class="link_collection">
+    <a href="#" class="button">I'm done! Save these links</a>
+  </div>
 </template>
