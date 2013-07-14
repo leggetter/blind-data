@@ -78,6 +78,11 @@ button:hover,
 	height: 10px;
 }
 
+.serps table tr td.text {
+	padding-top: 25px;
+	padding-bottom: 15px;
+}
+
 .serps tr.data {
 	background: #fff;
 }
