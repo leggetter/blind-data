@@ -2,7 +2,7 @@
 
 Blind Data was created a Culture Hack Scotland 2013.
 
-The purpose of the application is to facilitate the discovery and exploration of data, and to create links between one or more pieces of data. These new links then become data themselves, and can also be discovered and linked to.
+The purpose of the application is to facilitate the discovery, exploration and linking of data. These new links then become data themselves, and can also be discovered and linked to.
 
 ## Data Discovery
 
@@ -23,6 +23,10 @@ Depending on demand this may be developed further.
 * Security: Meteor provides a way of securing data. BlindData doesn't presently implement this.
 * Visualisation of linked data for exploration
 * Include additional sources of information within the search.
+
+## Additional information
+
+* Slides from Culture Hack Scotland: http://j.mp/blind-data-pres
 
 ## Credits
 
